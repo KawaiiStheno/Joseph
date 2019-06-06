@@ -55,33 +55,33 @@ int main(){
 			    }
 			x = insere_ordenada(li, al);
 			if(x==0){
-				printf("Erro!\n");
+				printf("\nErro!\n");
 			}else{
-				printf("Numero inserido com sucesso!\n");
+				printf("\nFicha inserida com sucesso!\n");
 			}
 			break;
 			case 5:
 			x = remove_inicio(li);
 			if(x==0){
-				printf("Erro!\n");
+				printf("\nErro!\n");
 			}else{
-				printf("Numero removido com sucesso!\n");
+				printf("\nFicha removida com sucesso!\n");
 			}
 			break;
 			case 6:
 			x = remove_final(li);
 			if(x==0){
-				printf("Erro!\n");
+				printf("\nErro!\n");
 			}else{
-				printf("Numero removido com sucesso!\n");
+				printf("\nFicha removida com sucesso!\n");
 			}
 			break;
 			case 7:
 			x = tamanho_lista(li);
 			if(x==-1){
-				printf("Erro!\n");
+				printf("\nErro!\n");
 			}else{
-				printf("O tamanho da lista eh:%d\n\n",x);
+				printf("\nO tamanho da lista eh:%d\n\n",x);
 			}
 			break;
 			case 8:
