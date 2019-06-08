@@ -6,19 +6,20 @@
 #endif // _WIN32
 
 int main(){
-	int x, aux, cont;
+	int x, aux, cont, aux2;
 	Lista *li;
 	struct entrada al;
 	do{
 		printf("1.Criar lista.\n");
 		printf("2.Verificar se a lista eh vazia.\n");
 		printf("3.Liberar a lista.\n");
-		printf("4.Inserir elemento na lista.\n");
-		printf("5.Remover elemento no inicio da lista.\n");
-		printf("6.Remover elemento no final da lista.\n");
-		printf("7.Verificar o tamanho da lista.\n");
-		printf("8.Imprimir a lista.\n");
-		printf("9.Finalizar o programa.\n");
+		printf("4.Inserir dados de jogador.\n");
+		printf("5.Remover ficha no inicio da lista.\n");
+		printf("6.Remover ficha no final da lista.\n");
+		printf("7.Remover ficha especifica.\n");
+		printf("8.Verificar a quantidade de jogadores.\n");
+		printf("9.Imprimir fichas.\n");
+		printf("10.Finalizar o programa.\n");
 		printf("Digite sua escolha: ");
 		scanf("%d",&aux);
 		system(CLEAR);
@@ -29,18 +30,18 @@ int main(){
 			case 2:
 			x = lista_vazia(li);
 			if(x==0){
-				printf("A lista nao esta vazia!\n");
+				printf("A lista nao esta vazia!\n\n");
 			}else{
-				printf("A lista esta vazia!\n");
+				printf("A lista esta vazia!\n\n");
 			}
 			break;
 			case 3:
-			libera_lista(li);
-			break;
+				libera_lista(li);
+				break;
 			case 4:
-				printf("Digite seu ID: ");
-				scanf("%d",&al.id);
-				getchar();
+			    printf("Digite seu ID: ");
+			    scanf("%d",&al.id);
+			    getchar();
 			    printf("Digite seu nome: ");
 			    scanf("%[^\n]",al.nome);
 			    getchar();
@@ -49,47 +50,68 @@ int main(){
 			    getchar();
 			    printf("Digite sua raca: ");
 			    scanf("%[^\n]",al.raca);
-			    for(cont=0;cont<6;cont++){
-			    	printf("%d atributo: ",cont+1);
-			    	scanf("%d",&al.atributos[cont]);
+			    printf("Forca: ");
+			    scanf("%d",&al.fo);
+			    printf("Constituicao: ");
+			    scanf("%d",&al.cons);
+			    printf("Destreza: ");
+			    scanf("%d",&al.des);
+			    printf("Inteligencia: ");
+			    scanf("%d",&al.inte);
+			    printf("Sabedoria: ");
+			    scanf("%d",&al.sab);
+			    printf("Carisma: ");
+			    scanf("%d",&al.car);
+			    x = insere_ordenada(li, al);
+			    system(CLEAR);
+			    if(x==0){
+				printf("Erro!\n");
+			    }else{
+				printf("Ficha inserida com sucesso!\n\n");
 			    }
-			x = insere_ordenada(li, al);
-			if(x==0){
-				printf("\nErro!\n");
-			}else{
-				printf("\nFicha inserida com sucesso!\n");
-			}
 			break;
 			case 5:
 			x = remove_inicio(li);
 			if(x==0){
-				printf("\nErro!\n");
+				printf("Erro!\n");
 			}else{
-				printf("\nFicha removida com sucesso!\n");
+				printf("Ficha removida com sucesso!\n\n");
 			}
 			break;
 			case 6:
 			x = remove_final(li);
 			if(x==0){
-				printf("\nErro!\n");
+				printf("Erro!\n");
 			}else{
-				printf("\nFicha removida com sucesso!\n");
+				printf("Ficha removida com sucesso!\n\n");
 			}
 			break;
 			case 7:
-			x = tamanho_lista(li);
-			if(x==-1){
-				printf("\nErro!\n");
-			}else{
-				printf("\nO tamanho da lista eh:%d\n\n",x);
-			}
+				printf("Digite o Id do jogador que deseja remover: ");
+				scanf("%d",&aux2);
+				x = remove_qlqr(li, aux2);
+				if(x==0){
+					printf("Erro!\n");
+				}else if(x==-1){
+					printf("Jogador nao encontrado!\n\n");
+				}else{
+					printf("Jogador removido com sucesso!\n\n");
+				}
 			break;
 			case 8:
+			x = tamanho_lista(li);
+			if(x==-1){
+				printf("Erro!\n");
+			}else{
+				printf("A quantidade de jogadores eh:%d\n\n",x);
+			}
+			break;
+			case 9:
 				imprime(li);
 				printf("\n\n");
 			break;
 		}
-	}while(aux!=9);
+	}while(aux!=10);
 
 	return 0;
 }
