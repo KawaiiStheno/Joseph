@@ -15,7 +15,6 @@ Lista* cria_lista(){
 }
 
 void libera_lista(Lista* li){
-	if(li != NULL){
 		Elem* no;
 		while((*li) != NULL){
 			no = *li;
@@ -23,7 +22,7 @@ void libera_lista(Lista* li){
 			free(no);
 		}
 		free(li);
-	}
+		li = NULL;
 }
 
 int tamanho_lista(Lista* li){
@@ -46,42 +45,6 @@ int lista_vazia(Lista* li){
 		return 1;
 	}else
 	return 0;
-}
-
-int insere_inicio(Lista* li, struct entrada al){
-	if(li == NULL){
-		return 0;
-	}
-	Elem* no = (Elem*)malloc(sizeof(Elem));
-	if(no == NULL){
-		return 0;
-	}
-	no->dados = al;
-	no->prox = (*li);
-	*li = no;
-	return 1;
-}
-
-int insere_final(Lista* li, struct entrada al){
-	if(li == NULL){
-		return 0;
-	}
-	Elem *no = (Elem*)malloc(sizeof(Elem));
-	if(no == NULL){
-		return 0;
-	}
-	no->dados = al;
-	no->prox = NULL;
-	if((*li)==NULL){
-		*li = no;
-	}else{
-		Elem *aux = *li;
-		while(aux->prox != NULL){
-			aux = aux->prox;
-		}
-		aux->prox = no;
-	}
-	return 1;
 }
 
 int insere_ordenada(Lista* li, struct entrada al){
@@ -114,7 +77,7 @@ int insere_ordenada(Lista* li, struct entrada al){
 	}
 }
 void imprime(Lista* li){
-	if(li==NULL){
+	if(li==NULL||(*li)==NULL){
 		printf("A lista esta vazia!\n");
 	}else{
 		Elem *aux = *li;
@@ -126,10 +89,13 @@ void imprime(Lista* li){
 			printf("Nome do Jogador: %s\n",(aux->dados).nome);
 			printf("Nome do Personagem: %s\n",(aux->dados).player);
 			printf("Raca: %s\n",(aux->dados).raca);
-			for(cont2=0;cont2<6;cont2++){
-				printf("Atributo %d: %d\n",cont2+1,(aux->dados).atributos[cont2]);
-				printf("\n");
-			}
+			printf("Forca: %d\n",(aux->dados).fo);
+			printf("Constituicao: %d\n",(aux->dados).cons);
+			printf("Destreza: %d\n",(aux->dados).des);
+			printf("Inteligencia: %d\n",(aux->dados).inte);
+			printf("Sabedoria: %d\n",(aux->dados).sab);
+			printf("Carisma: %d\n",(aux->dados).car);
+			
 			aux = aux->prox;
 		}
 	}
@@ -156,6 +122,27 @@ int remove_final(Lista* li){
 	}
 	if(no==(*li)){
 		*li=no->prox;
+	}else{
+		ant->prox = no->prox;
+	}
+	free(no);
+	return 1;
+}
+
+int remove_qlqr(Lista* li, int id){
+	if(li==NULL){
+		return 0;
+	}
+	Elem *ant, *no = *li;
+	while(no!=NULL && no->dados.id!=id){
+		ant = no;
+		no=no->prox;
+	}
+	if(no==NULL){
+		return -1;
+	}
+	if(no == *li){
+		*li = no->prox;
 	}else{
 		ant->prox = no->prox;
 	}
