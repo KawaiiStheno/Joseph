@@ -3,7 +3,7 @@
 
 struct entrada{
 	char nome[100], player[100], raca[100];
-	int atributos[6], id;
+	int fo, sab, inte, car, des, cons, id;
 };
 typedef struct elemento* Lista;
 
@@ -15,10 +15,6 @@ int tamanho_lista(Lista* li);
 
 int lista_vazia(Lista* li);
 
-int insere_inicio(Lista* li, struct entrada al);
-
-int insere_final(Lista* li, struct entrada al);
-
 int insere_ordenada(Lista* li, struct entrada al);
 
 int remove_inicio(Lista* li);
@@ -26,3 +22,5 @@ int remove_inicio(Lista* li);
 int remove_final(Lista* li);
 
 void imprime(Lista* li);
+
+int remove_qlqr(Lista* li, int id);
