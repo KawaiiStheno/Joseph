@@ -1,10 +1,4 @@
-#include "ladae.h"
-
-struct elemento{
-	struct entrada dados;
-	struct elemento *prox;
-};
-typedef struct elemento Elem;
+#include "fichas.h"
 
 Lista* cria_lista(){
 	Lista* li = (Lista*)malloc(sizeof(Lista));
@@ -80,7 +74,7 @@ void imprime(Lista* li){
 		printf("A lista esta vazia!\n");
 	}else{
 		Elem *aux = *li;
-		int cont = 0,cont2;
+		int cont = 0;
 		while(aux != NULL){
 			cont++;
 			printf("\t\t\tJogador %d\n",cont);
