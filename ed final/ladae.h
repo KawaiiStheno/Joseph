@@ -7,6 +7,12 @@ struct entrada{
 };
 typedef struct elemento* Lista;
 
+struct elemento{
+	struct entrada dados;
+	struct elemento *prox;
+};
+typedef struct elemento Elem;
+
 Lista* cria_lista();
 
 void libera_lista(Lista* li);
@@ -24,3 +30,4 @@ int remove_final(Lista* li);
 void imprime(Lista* li);
 
 int remove_qlqr(Lista* li, int id);
+
