@@ -21,8 +21,7 @@ void libera_lista(Lista* li){
 			*li = (*li)->prox;
 			free(no);
 		}
-		free(li);
-		li = NULL;
+		free(*li);
 }
 
 int tamanho_lista(Lista* li){
