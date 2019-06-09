@@ -1,12 +1,12 @@
-#include "ladae.h"
+#include "fichas.h"
 #ifdef _WIN32
 #define CLEAR "cls"
 #else
 #define CLEAR "clear"
-#endif // _WIN32
+#endif
 
 int main(){
-	int x, aux, cont, aux2;
+	int x, aux, aux2;
 	Lista *li;
 	struct entrada al;
 	do{
@@ -36,12 +36,12 @@ int main(){
 			}
 			break;
 			case 3:
-				libera_lista(li);
-				break;
+			libera_lista(li);
+			break;
 			case 4:
-			    printf("Digite seu ID: ");
-			    scanf("%d",&al.id);
-			    getchar();
+				printf("Digite seu ID: ");
+				scanf("%d",&al.id);
+				getchar();
 			    printf("Digite seu nome: ");
 			    scanf("%[^\n]",al.nome);
 			    getchar();
@@ -62,13 +62,13 @@ int main(){
 			    scanf("%d",&al.sab);
 			    printf("Carisma: ");
 			    scanf("%d",&al.car);
-			    x = insere_ordenada(li, al);
-			    system(CLEAR);
-			    if(x==0){
+				x = insere_ordenada(li, al);
+				system(CLEAR);
+			if(x==0){
 				printf("Erro!\n");
-			    }else{
+			}else{
 				printf("Ficha inserida com sucesso!\n\n");
-			    }
+			}
 			break;
 			case 5:
 			x = remove_inicio(li);
